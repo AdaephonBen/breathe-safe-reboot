@@ -173,13 +173,15 @@ class App extends React.Component {
         >
           <Text size="xlarge">Welcome to the Canary App</Text>
         </Box>
-        <Box justify="center" align="center">
+        <Box align="center">
           <Text
             size="medium"
             margin={{ left: "medium", top: "medium", right: "medium" }}
+            align="center"
           >
-            Your current location is Latitude: {this.state.latitude}, Longitude:{" "}
-            {this.state.longitude}.
+            Your current location is <br />
+            Latitude: {this.state.latitude}
+            <br /> Longitude: {this.state.longitude}.
           </Text>
           <Text
             size="medium"

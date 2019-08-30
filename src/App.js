@@ -38,8 +38,8 @@ class App extends React.Component {
       long: 78.126699
     },
     {
-      lat: -65.50514,
-      long: -91.37108
+      lat: 17.5947351,
+      long: 78.1235458
     }
   ];
   haversineDistance(lat1, lon1, lat2, lon2) {

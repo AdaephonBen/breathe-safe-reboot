@@ -30,8 +30,8 @@ class App extends React.Component {
   }
   sensorLocations = [
     {
-      lat: 1,
-      long: 2
+      lat: 17.5975733,
+      long: 78.1269472
     },
     {
       lat: 0,
@@ -188,9 +188,15 @@ class App extends React.Component {
             margin={{ left: "medium", top: "medium", right: "medium" }}
           >
             {this.state.customSelected ? (
-              <div>This sensor is at {this.state.nearestSensor}</div>
+              <div>
+                This sensor is at {this.state.nearestSensor} and is{" "}
+                {Math.floor(this.state.minimumDistance)} metres away.{" "}
+              </div>
             ) : (
-              <div>The nearest sensor is at {this.state.nearestSensor}.</div>
+              <div>
+                The nearest sensor is at {this.state.nearestSensor} and is{" "}
+                {Math.floor(this.state.minimumDistance)} metres away.
+              </div>
             )}
           </Text>
           <Text size="medium"></Text>

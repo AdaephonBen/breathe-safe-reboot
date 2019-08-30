@@ -8,14 +8,34 @@ class App extends React.Component {
     super();
     this.state = { latitude: -1, longitude: -1, customSelected: false };
   }
+  decideColor() {
+    if (this.state.currentReading <= 1000) {
+      return "status-ok";
+    } else if (this.state.currentReading <= 2000) {
+      return "status-warning";
+    } else {
+      return "status-critical";
+    }
+  }
+  getSensorReading(index) {
+    fetch(
+      "https://api.thingspeak.com/channels/854872/fields/" +
+        (index + 1) +
+        "/last"
+    )
+      .then(response => response.json())
+      .then(response => {
+        this.setState({ currentReading: response });
+      });
+  }
   sensorLocations = [
-    {
-      lat: 0,
-      long: 0
-    },
     {
       lat: 1,
       long: 2
+    },
+    {
+      lat: 0,
+      long: 0
     },
     {
       lat: -65.50514,
@@ -61,6 +81,7 @@ class App extends React.Component {
     } else if (sensorIndex == 2) {
       this.setState({ nearestSensor: "Academic Block A" });
     }
+    this.getSensorReading(sensorIndex);
   }
   findNearestSensor(myLat, myLong) {
     let minimumDistance = this.haversineDistance(
@@ -90,6 +111,7 @@ class App extends React.Component {
       minimumDistance: minimumDistance,
       minimumIndex: minimumIndex
     });
+    this.getSensorReading(minimumIndex);
   }
   findAndUpdateLocation() {
     if (!navigator.geolocation) {
@@ -119,6 +141,22 @@ class App extends React.Component {
   }
   componentDidMount() {
     this.findAndUpdateLocation();
+  }
+  statusOK() {
+    return <Text>The air is safe to breathe. </Text>;
+  }
+  statusMedium() {
+    return <Text>The air is slightly polluted. Try to stay indoors. </Text>;
+  }
+  statusBad() {
+    return <Text>The air is very polluted. Definitely stay indoors. </Text>;
+  }
+  statusShower() {
+    if (this.state.currentReading <= 1000) {
+      return <Box color="status-ok">{this.statusOK()}</Box>;
+    } else if (this.state.currentReading <= 2000) {
+    } else {
+    }
   }
   render() {
     return (
@@ -193,6 +231,24 @@ class App extends React.Component {
                 "?dynamic=true&width=350"
               }
             ></iframe>
+          </Box>
+          <Box
+            align="center"
+            background={{
+              color: this.decideColor(),
+              dark: true
+            }}
+            style={{ color: "white" }}
+            margin={{ top: "medium" }}
+            pad={{
+              left: "medium",
+              right: "medium",
+              top: "medium",
+              bottom: "medium"
+            }}
+          >
+            {this.statusShower()}
+            <br /> PPM Level = {this.state.currentReading}
           </Box>
         </Box>
       </Grommet>

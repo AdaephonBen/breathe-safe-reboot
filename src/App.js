@@ -136,11 +136,17 @@ class App extends React.Component {
           <Text size="xlarge">Welcome to the Canary App</Text>
         </Box>
         <Box justify="center" align="center">
-          <Text size="medium" margin={{ left: "medium", top: "medium" }}>
+          <Text
+            size="medium"
+            margin={{ left: "medium", top: "medium", right: "medium" }}
+          >
             Your current location is Latitude: {this.state.latitude}, Longitude:{" "}
             {this.state.longitude}.
           </Text>
-          <Text size="medium" margin={{ left: "medium", top: "medium" }}>
+          <Text
+            size="medium"
+            margin={{ left: "medium", top: "medium", right: "medium" }}
+          >
             {this.state.customSelected ? (
               <div>This sensor is at {this.state.nearestSensor}</div>
             ) : (

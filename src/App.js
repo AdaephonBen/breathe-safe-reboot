@@ -34,8 +34,8 @@ class App extends React.Component {
       long: 78.1270862
     },
     {
-      lat: 0,
-      long: 0
+      lat: 17.5976267,
+      long: 78.126699
     },
     {
       lat: -65.50514,

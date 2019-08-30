@@ -228,7 +228,7 @@ class App extends React.Component {
               ]}
             />
           </Box>
-          <Box margin={{ top: "medium" }}>
+          <Box margin={{ top: "small" }}>
             <iframe
               width="350"
               height="250"

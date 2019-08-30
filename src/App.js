@@ -31,7 +31,7 @@ class App extends React.Component {
   sensorLocations = [
     {
       lat: 17.5975733,
-      long: 78.1269472
+      long: 78.1270862
     },
     {
       lat: 0,

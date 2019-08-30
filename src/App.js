@@ -13,7 +13,7 @@ class App extends React.Component {
       return "status-ok";
     } else if (this.state.currentReading <= 2000) {
       return "status-warning";
-    } else {
+    } else if (this.state.currentReading > 3000) {
       return "status-critical";
     }
   }
@@ -238,7 +238,7 @@ class App extends React.Component {
               color: this.decideColor(),
               dark: true
             }}
-            style={{ color: "white" }}
+            style={{ color: "white", borderRadius: "10px" }}
             margin={{ top: "medium" }}
             pad={{
               left: "medium",

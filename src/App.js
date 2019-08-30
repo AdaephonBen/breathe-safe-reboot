@@ -10,12 +10,12 @@ class App extends React.Component {
   }
   sensorLocations = [
     {
-      lat: -33.56939,
-      long: -16.29037
+      lat: 0,
+      long: 0
     },
     {
-      lat: -47.64602,
-      long: -82.1686
+      lat: 1,
+      long: 2
     },
     {
       lat: -65.50514,
@@ -57,7 +57,9 @@ class App extends React.Component {
     if (sensorIndex == 0) {
       this.setState({ nearestSensor: "Hostel Block E" });
     } else if (sensorIndex == 1) {
-      this.setState({ nearestSensor: "Academic Block C" });
+      this.setState({ nearestSensor: "Hostel Block B" });
+    } else if (sensorIndex == 2) {
+      this.setState({ nearestSensor: "Academic Block A" });
     }
   }
   findNearestSensor(myLat, myLong) {
@@ -108,7 +110,9 @@ class App extends React.Component {
         if (this.state.minimumIndex == 0) {
           this.setState({ nearestSensor: "Hostel Block E" });
         } else if (this.state.minimumIndex == 1) {
-          this.setState({ nearestSensor: "Academic Block C" });
+          this.setState({ nearestSensor: "Hostel Block B" });
+        } else {
+          this.setState({ nearestSensor: "Academic Block A" });
         }
       });
     }
@@ -158,9 +162,15 @@ class App extends React.Component {
                   }
                 },
                 {
-                  label: "Academic Block A",
+                  label: "Hostel Block B",
                   onClick: () => {
                     this.setSensorLocation(1);
+                  }
+                },
+                {
+                  label: "Academic Block A",
+                  onClick: () => {
+                    this.setSensorLocation(2);
                   }
                 }
               ]}
